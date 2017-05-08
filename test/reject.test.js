@@ -18,4 +18,28 @@ describe('reject()', () => {
     const orderItems = _.reject(order, (value) => value === null);
     expect(orderItems).toEqual(['burger', 'ketchup', 'cookie']);
   });
+
+  it('rejects filled values from an object if supplied a callback checking for them', () => {
+    const order = {
+      entree: 'burger',
+      side: null,
+      condiment: 'ketchup',
+      drink: null,
+      dessert: 'cookie'
+    };
+
+    const nulls = _.reject(order, (value) => value);
+    expect(nulls).toEqual([null, null]);
+  });
+
+  it('rejects any filled values if not supplied a callback', () => {
+    const order = {
+      entree: 'burger',
+      side: null,
+      condiment: '',
+      drink: null,
+      dessert: 'cookie'
+    };
+    expect(_.reject(order)).toEqual([null, '', null]);
+  });
 });

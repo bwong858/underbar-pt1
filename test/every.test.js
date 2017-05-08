@@ -17,5 +17,12 @@ describe('every()', () => {
       expect(_.every(nums, num => num % 2 === 1)).toBe(false);
     });
 
+    it('returns true for an empty array no matter what the callback is', () => {
+      const nums = [];
+      expect(_.every(nums, num => num)).toBe(true);
+      expect(_.every(nums, num => num %  2 === 1)).toBe(true);
+      expect(_.every(nums)).toBe(true);
+    });
+
   });
 });

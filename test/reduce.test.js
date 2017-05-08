@@ -13,4 +13,10 @@ describe('reduce()', () => {
     expect(result).toEqual(15);
   });
 
+  it('reduces an array of strings to one concatenated string, *with* an explicit initial value for the accumulator', () => {
+    const words = ["The ", "dog ", "pooped"];
+    const result = _.reduce(words, (a, b) => a + b, '');
+    expect(result).toEqual("The dog pooped");
+  });
+
 });

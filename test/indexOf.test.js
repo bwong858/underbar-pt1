@@ -26,4 +26,14 @@ describe('indexOf()', () => {
     expect(_.indexOf(arr, 'bar', 2)).toBe(3);
   });
 
+  it('returns the same index if match coincides with given offset', () => {
+    const arr = ['foo', 'bar', 'baz', 'bar', 'bar'];
+    expect(_.indexOf(arr, 'bar', 1)).toBe(1);
+  });
+
+  it('returns -1 if the given offset is OOB', () => {
+    const arr = ['foo', 'bar', 'baz', 'bar', 'bar'];
+    expect(_.indexOf(arr, 'bar', 10)).toBe(-1);
+  });
+
 });

@@ -39,5 +39,25 @@ describe('each()', () => {
     });
     expect(count).toBe(3);
   });
+
+  it('it does not iterate through an empty array or array-like object', () => {
+    const arr = [];
+    let count = 0;
+    _.each(arr, function(element, index, array) {
+      expect(element).toEqual(array[index]);
+      count += 1;
+    });
+    expect(count).toBe(0);
+
+    const arrayLikeObj = {
+      length: 0
+    };
+    count = 0;
+    _.each(arrayLikeObj, function(element, index, iteratedArrayLikeObj) {
+      expect(element).toEqual(iteratedArrayLikeObj[index]);
+      count += 1;
+    });
+    expect(count).toBe(0);
+  });
 });
 
